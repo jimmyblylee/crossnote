@@ -1,0 +1,257 @@
+/* Callout styles */
+.callout {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12), 0 3px 1px -2px rgba(0, 0, 0, .2);
+  position: relative;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  border-left: .4rem solid rgba(68, 138, 255, .8);
+  border-radius: .2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  overflow: auto;
+}
+
+.callout > p {
+  margin-top: .8rem;
+}
+
+.callout > .callout-title {
+  margin: 0 -1.2rem;
+  padding: .8rem 1.2rem .8rem 3.6rem;
+  border-bottom: 1px solid rgba(68, 138, 255, .2);
+  background-color: rgba(68, 138, 255, .1);
+  font-weight: 700;
+}
+
+.callout > .callout-title:before {
+  position: absolute;
+  left: 1.2rem;
+  font-size: 1.5rem;
+  color: rgba(68, 138, 255, .8);
+  content: "\E3C9";
+}
+
+.callout > .callout-title:before {
+  font-family: Material Icons;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 2rem;
+  text-transform: none;
+  white-space: nowrap;
+  speak: none;
+  word-wrap: normal;
+  direction: ltr;
+}
+
+/* Note, Summary, Abstract, TLDR */
+.callout.callout-note,
+.callout.callout-summary,
+.callout.callout-abstract,
+.callout.callout-tldr {
+  border-left-color: rgba(0, 176, 255, .8);
+}
+
+.callout.callout-note > .callout-title,
+.callout.callout-summary > .callout-title,
+.callout.callout-abstract > .callout-title,
+.callout.callout-tldr > .callout-title {
+  background-color: rgba(0, 176, 255, .1);
+  border-bottom-color: rgba(0, 176, 255, .2);
+}
+
+.callout.callout-note > .callout-title:before,
+.callout.callout-summary > .callout-title:before,
+.callout.callout-abstract > .callout-title:before,
+.callout.callout-tldr > .callout-title:before {
+  color: rgba(0, 176, 255, 1);
+  content: "\E8D2";
+}
+
+/* Hint, Tip */
+.callout.callout-hint,
+.callout.callout-tip {
+  border-left-color: rgba(0, 191, 165, .8);
+}
+
+.callout.callout-hint > .callout-title,
+.callout.callout-tip > .callout-title {
+  background-color: rgba(0, 191, 165, .1);
+  border-bottom-color: rgba(0, 191, 165, .2);
+}
+
+.callout.callout-hint > .callout-title:before,
+.callout.callout-tip > .callout-title:before {
+  color: rgba(0, 191, 165, 1);
+  content: "\E80E";
+}
+
+/* Info, Todo */
+.callout.callout-info,
+.callout.callout-todo {
+  border-left-color: rgba(0, 184, 212, .8);
+}
+
+.callout.callout-info > .callout-title,
+.callout.callout-todo > .callout-title {
+  background-color: rgba(0, 184, 212, .1);
+  border-bottom-color: rgba(0, 184, 212, .2);
+}
+
+.callout.callout-info > .callout-title:before,
+.callout.callout-todo > .callout-title:before {
+  color: rgba(0, 184, 212, 1);
+  content: "\E88E";
+}
+
+/* Success, Check, Done */
+.callout.callout-success,
+.callout.callout-check,
+.callout.callout-done {
+  border-left-color: rgba(0, 200, 83, .8);
+}
+
+.callout.callout-success > .callout-title,
+.callout.callout-check > .callout-title,
+.callout.callout-done > .callout-title {
+  background-color: rgba(0, 200, 83, .1);
+  border-bottom-color: rgba(0, 200, 83, .2);
+}
+
+.callout.callout-success > .callout-title:before,
+.callout.callout-check > .callout-title:before,
+.callout.callout-done > .callout-title:before {
+  color: rgba(0, 200, 83, 1);
+  content: "\E876";
+}
+
+/* Question, Help, FAQ */
+.callout.callout-question,
+.callout.callout-help,
+.callout.callout-faq {
+  border-left-color: rgba(100, 221, 23, .8);
+}
+
+.callout.callout-question > .callout-title,
+.callout.callout-help > .callout-title,
+.callout.callout-faq > .callout-title {
+  background-color: rgba(100, 221, 23, .1);
+  border-bottom-color: rgba(100, 221, 23, .2);
+}
+
+.callout.callout-question > .callout-title:before,
+.callout.callout-help > .callout-title:before,
+.callout.callout-faq > .callout-title:before {
+  color: rgba(100, 221, 23, 1);
+  content: "\E887";
+}
+
+/* Warning, Attention, Caution */
+.callout.callout-warning,
+.callout.callout-attention,
+.callout.callout-caution {
+  border-left-color: rgba(255, 145, 0, .8);
+}
+
+.callout.callout-warning > .callout-title,
+.callout.callout-attention > .callout-title,
+.callout.callout-caution > .callout-title {
+  background-color: rgba(255, 145, 0, .1);
+  border-bottom-color: rgba(255, 145, 0, .2);
+}
+
+.callout.callout-attention > .callout-title:before {
+  color: rgba(255, 145, 0, 1);
+  content: "\E417";
+}
+
+.callout.callout-warning > .callout-title:before,
+.callout.callout-caution > .callout-title:before {
+  color: rgba(255, 145, 0, 1);
+  content: "\E002";
+}
+
+/* Failure, Fail, Missing */
+.callout.callout-failure,
+.callout.callout-fail,
+.callout.callout-missing {
+  border-left-color: rgba(255, 82, 82, .8);
+}
+
+.callout.callout-failure > .callout-title,
+.callout.callout-fail > .callout-title,
+.callout.callout-missing > .callout-title {
+  background-color: rgba(255, 82, 82, .1);
+  border-bottom-color: rgba(255, 82, 82, .2);
+}
+
+.callout.callout-failure > .callout-title:before,
+.callout.callout-fail > .callout-title:before,
+.callout.callout-missing > .callout-title:before {
+  color: rgba(255, 82, 82, 1);
+  content: "\E14C";
+}
+
+/* Danger, Error, Bug */
+.callout.callout-danger,
+.callout.callout-error,
+.callout.callout-bug {
+  border-left-color: rgba(255, 23, 68, .8);
+}
+
+.callout.callout-danger > .callout-title,
+.callout.callout-error > .callout-title,
+.callout.callout-bug > .callout-title {
+  background-color: rgba(255, 23, 68, .1);
+  border-bottom-color: rgba(255, 23, 68, .2);
+}
+
+.callout.callout-danger > .callout-title:before {
+  color: rgba(255, 23, 68, 1);
+  content: "\E3E7";
+}
+
+.callout.callout-error > .callout-title:before {
+  color: rgba(255, 23, 68, 1);
+  content: "\E14C";
+}
+
+.callout.callout-bug > .callout-title:before {
+  color: rgba(255, 23, 68, 1);
+  content: "\E868";
+}
+
+/* Example, Snippet */
+.callout.callout-example,
+.callout.callout-snippet {
+  border-left-color: rgba(0, 184, 212, .8);
+}
+
+.callout.callout-example > .callout-title,
+.callout.callout-snippet > .callout-title {
+  background-color: rgba(0, 184, 212, .1);
+  border-bottom-color: rgba(0, 184, 212, .2);
+}
+
+.callout.callout-example > .callout-title:before,
+.callout.callout-snippet > .callout-title:before {
+  color: rgba(0, 184, 212, 1);
+  content: "\E242";
+}
+
+/* Quote, Cite */
+.callout.callout-quote,
+.callout.callout-cite {
+  border-left-color: rgba(158, 158, 158, .8);
+}
+
+.callout.callout-quote > .callout-title,
+.callout.callout-cite > .callout-title {
+  background-color: rgba(158, 158, 158, .1);
+  border-bottom-color: rgba(158, 158, 158, .2);
+}
+
+.callout.callout-quote > .callout-title:before,
+.callout.callout-cite > .callout-title:before {
+  color: rgba(158, 158, 158, 1);
+  content: "\E244";
+} 
