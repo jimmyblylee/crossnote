@@ -452,12 +452,24 @@ window["initRevealPresentation"] = async function() {
   /**
    * Generate styles string for preview usage.
    */
-  private generateStylesForPreview(
+  private async generateStylesForPreview(
     isPresentationMode = false,
     yamlConfig = {},
     vscodePreviewPanel: vscode.WebviewPanel | null = null,
   ) {
     let styles = '';
+    const imageDirectoryPath = this.notebook.config.imageFolderPath;
+
+    // 定义加载文件的函数
+    const loadFile = async (filePath: string, options: any): Promise<string> => {
+      const basePath = utility.getCrossnoteBuildDirectory();
+      try {
+        return await this.fs.readFile(path.resolve(basePath, filePath));
+      } catch (error) {
+        console.error(`Failed to load file: ${filePath}`, error);
+        return '';
+      }
+    };
 
     // check math
     if (
@@ -536,13 +548,24 @@ window["initRevealPresentation"] = async function() {
     )}">`;
 
     // style markdown-it-admonition
-    styles += `<link rel="stylesheet" media="screen" href="${utility.addFileProtocol(
-      path.resolve(
-        utility.getCrossnoteBuildDirectory(),
-        './styles/markdown-it-admonition.css',
-      ),
-      vscodePreviewPanel,
-    )}">`;
+    this.filesCache['./styles/markdown-it-admonition.css'] =
+      this.filesCache['./styles/markdown-it-admonition.css'] ||
+      (await loadFile('./styles/markdown-it-admonition.css', {
+        fileDirectoryPath: this.fileDirectoryPath,
+        imageDirectoryPath,
+        notebook: this.notebook,
+      }));
+    styles += '<style>\n' + this.filesCache['./styles/markdown-it-admonition.css'] + '\n</style>';
+
+    // style markdown-it-callout
+    this.filesCache['./styles/markdown-it-callout.css'] =
+      this.filesCache['./styles/markdown-it-callout.css'] ||
+      (await loadFile('./styles/markdown-it-callout.css', {
+        fileDirectoryPath: this.fileDirectoryPath,
+        imageDirectoryPath,
+        notebook: this.notebook,
+      }));
+    styles += '<style>\n' + this.filesCache['./styles/markdown-it-callout.css'] + '\n</style>';
 
     // global styles
     styles += `<style>${this.notebook.config.globalCss}</style>`;
@@ -666,7 +689,7 @@ window["initRevealPresentation"] = async function() {
         />`
             : ''
         }
-        ${this.generateStylesForPreview(
+        ${await this.generateStylesForPreview(
           isPresentationMode,
           yamlConfig,
           vscodePreviewPanel,
@@ -1072,6 +1095,16 @@ if (typeof(window['Reveal']) !== 'undefined') {
           path.resolve(
             utility.getCrossnoteBuildDirectory(),
             './styles/markdown-it-admonition.css',
+          ),
+        );
+      }
+
+      // markdown-it-callout
+      if (html.indexOf('callout') > 0) {
+        styleCSS += await this.fs.readFile(
+          path.resolve(
+            utility.getCrossnoteBuildDirectory(),
+            './styles/markdown-it-callout.css',
           ),
         );
       }
@@ -1785,6 +1818,15 @@ sidebarTOCBtn.addEventListener('click', function(event) {
               path.resolve(
                 utility.getCrossnoteBuildDirectory(),
                 './styles/markdown-it-admonition.css',
+              ),
+            )
+          : '',
+        // markdown-it-callout
+        outputHTML.indexOf('callout') > 0
+          ? await this.fs.readFile(
+              path.resolve(
+                utility.getCrossnoteBuildDirectory(),
+                './styles/markdown-it-callout.css',
               ),
             )
           : '',

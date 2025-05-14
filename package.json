@@ -30,14 +30,14 @@
     "out"
   ],
   "scripts": {
-    "build": "gulp clean-out && yarn copy:files && yarn compile:less && yarn build:typings && yarn build:esbuild",
+    "build": "gulp clean-out && npm run copy:files && npm run compile:less && npm run build:typings && npm run build:esbuild",
     "build:esbuild": "node build.js",
     "build:typings": "tsc --project . --declaration",
-    "build:watch": "gulp clean-out && yarn copy:files && yarn compile:less && concurrently \"tsc --project . --watch\" \"node build.js --watch\" \"gulp watch-less\"",
+    "build:watch": "gulp clean-out && npm run copy:files && npm run compile:less && concurrently \"tsc --project . --watch\" \"node build.js --watch\" \"gulp watch-less\"",
     "check:all": "npm run check:prettier && npm run check:tsc && npm run check:lint",
     "check:lint": "eslint .",
     "check:prettier": "prettier --check \"**/*.*\"",
-    "check:tsc": "tsc --project .",
+    "check:tsc": "tsc --project .", 
     "compile:less": "gulp compile-less",
     "copy:files": "gulp copy-files",
     "fix": "npm run fix:lint && npm run fix:prettier",

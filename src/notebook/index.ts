@@ -20,6 +20,7 @@ import useMarkdownItMath from '../custom-markdown-it-features/math';
 import useMarkdownItSourceMap from '../custom-markdown-it-features/sourcemap';
 import useMarkdownItWidget from '../custom-markdown-it-features/widget';
 import useMarkdownItWikilink from '../custom-markdown-it-features/wikilink';
+import useMarkdownItCallout from '../custom-markdown-it-features/callout';
 import { MarkdownEngine } from '../markdown-engine';
 import { replaceVariablesInString } from '../utility';
 import { loadConfigsInDirectory, wrapNodeFSAsApi } from './config-helper';
@@ -158,6 +159,7 @@ export class Notebook {
     useMarkdownItMath(md, this);
     useMarkdownItWikilink(md, this);
     useMarkdownAdmonition(md);
+    useMarkdownItCallout(md);
     useMarkdownItSourceMap(md);
     useMarkdownItWidget(md, this);
     return md;
