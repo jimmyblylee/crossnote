@@ -1,7 +1,7 @@
 {
   "name": "crossnote",
-  "version": "jimmy-0.9.14",
-  "description": "A powerful markdown notebook tool",
+  "version": "0.9.15",
+  "description": "A powerful markdown notebook tool with Callout syntax support",
   "keywords": [
     "markdown"
   ],
@@ -37,7 +37,7 @@
     "check:all": "npm run check:prettier && npm run check:tsc && npm run check:lint",
     "check:lint": "eslint .",
     "check:prettier": "prettier --check \"**/*.*\"",
-    "check:tsc": "tsc --project .", 
+    "check:tsc": "tsc --project .",
     "compile:less": "gulp compile-less",
     "copy:files": "gulp copy-files",
     "fix": "npm run fix:lint && npm run fix:prettier",
